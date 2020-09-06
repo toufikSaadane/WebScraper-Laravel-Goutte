@@ -1,7 +1,23 @@
-{
-    "overview": {
-        "Coronavirus Cases ": "27,218,494",
-        "Deaths ": "885,954",
-        "Recovered ": "19,300,334"
+[
+    {
+        "overview": {
+            "Coronavirus Cases ": "27,228,306",
+            "Deaths ": "886,050",
+            "Recovered ": "19,309,097"
+        }
+    },
+    {
+        "morocco": {
+            "Coronavirus Cases ": "72,394",
+            "Deaths ": "1,361",
+            "Recovered ": "55,274"
+        }
+    },
+    {
+        "morocco": {
+            "Coronavirus Cases ": "74,787",
+            "Deaths ": "6,243",
+            "Recovered ": "N\/A"
+        }
     }
-}
+]
