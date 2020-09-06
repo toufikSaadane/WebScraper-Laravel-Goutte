@@ -15,16 +15,14 @@ class Scraper
     /**
      * @return array
      */
-    public function totalOverview()
+    private function totalOverview()
     {
         $c = new Client();
         $data = $c->request("GET", "https://www.worldometers.info/coronavirus/");
 
         $k = $data->filter("#maincounter-wrap  > h1")->each(
             function ($item) {
-
                 $this->key[] = str_replace(":", " ", $item->text());
-
             }
         );
 
@@ -38,10 +36,21 @@ class Scraper
         return ["overview" => $ar];
     }
 
-    public function scrapingMorocco(){
+    private function scrapingMorocco()
+    {
+        return ["morocco" => $this->mainOperations('morocco')];
+    }
 
+    public function scrapingNederland()
+    {
+        return ["nederland" => $this->mainOperations('netherland')];
+    }
+
+
+    private function mainOperations(string $land)
+    {
         $c = new Client();
-        $data = $c->request("GET", "https://www.worldometers.info/coronavirus/country/morocco/");
+        $data = $c->request("GET", "https://www.worldometers.info/coronavirus/country/$land/");
 
         $k = $data->filter("#maincounter-wrap  > h1")->each(
             function ($item) {
@@ -57,44 +66,26 @@ class Scraper
             }
         );
 
-        $ar = array_combine($this->key, $this->value);
-        return ["morocco" => $ar];
+        return array_combine($this->key, $this->value);
     }
 
-    public function scrapingNederland(){
-
-        $c = new Client();
-        $data = $c->request("GET", "https://www.worldometers.info/coronavirus/country/netherlands/");
-
-        $k = $data->filter("#maincounter-wrap  > h1")->each(
-            function ($item) {
-
-                $this->key[] = str_replace(":", " ", $item->text());
-
-            }
-        );
-
-        $v = $data->filter(".maincounter-number  > span")->each(
-            function ($item) {
-                $this->value[] = $item->text();
-            }
-        );
-
-        $ar = array_combine($this->key, $this->value);
-        return ["nederland" => $ar];
-    }
-    public function data(){
+    public function data()
+    {
         return collect([
             $this->totalOverview(),
             $this->scrapingMorocco(),
             $this->scrapingNederland()
-        ])->toJson();
+        ]);
     }
-    public function createJsonFile(){
-        $file = date('Y-m-d'). '_file.json';
-        $destinationPath=public_path()."/ScraperStorage/json/";
-        if (!is_dir($destinationPath)) {  mkdir($destinationPath,0777,true);  }
-        File::put($destinationPath.$file,$this->data());
+
+    public function createJsonFile()
+    {
+        $file = date('Y-m-d') . '_refactoring_file.json';
+        $destinationPath = public_path() . "/ScraperStorage/json/";
+        if (!is_dir($destinationPath)) {
+            mkdir($destinationPath, 0777, true);
+        }
+        File::put($destinationPath . $file, $this->data());
         echo "done";
         return;
     }
