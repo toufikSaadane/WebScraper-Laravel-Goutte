@@ -37,7 +37,7 @@ class scraper extends Command
      */
     public function handle()
     {
-        (new \App\ScraperService\Scraper())->createJsonFile();
+        (new \App\ScraperService\Scraper())->other();
         return 0;
     }
 }

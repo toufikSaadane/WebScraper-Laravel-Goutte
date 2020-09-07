@@ -15,14 +15,16 @@ class Scraper
     /**
      * @return array
      */
-    private function totalOverview()
+    public function totalOverview()
     {
         $c = new Client();
         $data = $c->request("GET", "https://www.worldometers.info/coronavirus/");
 
         $k = $data->filter("#maincounter-wrap  > h1")->each(
             function ($item) {
+
                 $this->key[] = str_replace(":", " ", $item->text());
+
             }
         );
 
@@ -36,7 +38,7 @@ class Scraper
         return ["overview" => $ar];
     }
 
-    private function scrapingMorocco()
+    public function scrapingMorocco()
     {
         return ["morocco" => $this->mainOperations('morocco')];
     }
@@ -69,13 +71,50 @@ class Scraper
         return array_combine($this->key, $this->value);
     }
 
-    public function data()
+    public function other()
+    {
+        $c = new Client();
+        $data = $c->request("GET", "https://www.worldometers.info/coronavirus/");
+
+        $k = $data->filter("table  > tbody > tr")->each(
+            function ($item) {
+                $this->key[] = str_replace(":", " ", $item->text());
+            }
+        );
+
+        $v = $data->filter(".main_table_countries_today  > span")->each(
+            function ($item) {
+                $this->value[] = $item->text();
+            }
+        );
+        $detaille = [];
+        foreach (array_slice($this->key, 8) as $item => $value) {
+            $detaille[$item] = explode(" ", $value);
+        }
+        $nogmeerDetaills = [];
+        foreach ($detaille as $item => $value) {
+            if (is_string($value[1])) {
+                $nogmeerDetaills[$value[1]] = [
+                    "totalCases" => $value[2],
+                    "newCases" => $value[3],
+                    "death" => $value[5] ?? ''
+                ];
+            }
+        }
+        print_r($nogmeerDetaills);
+//        $ar = array_combine($this->key, $this->value);
+//        return ["overview" => $ar];
+    }
+
+    private function data()
     {
         return collect([
             $this->totalOverview(),
-            $this->scrapingMorocco(),
-            $this->scrapingNederland()
-        ]);
+            "countries" => [
+                $this->scrapingMorocco(),
+                $this->scrapingNederland()
+            ]
+        ])->toJson();
     }
 
     public function createJsonFile()

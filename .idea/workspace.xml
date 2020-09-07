@@ -21,6 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="33282b0e-d317-4f9d-a717-5c84279afa38" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Console/Commands/scraper.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Commands/scraper.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/ScraperService/Scraper.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/ScraperService/Scraper.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -172,7 +173,9 @@
       <option name="presentableId" value="Default" />
       <updated>1599417032104</updated>
       <workItem from="1599417033195" duration="333000" />
-      <workItem from="1599418087614" duration="1891000" />
+      <workItem from="1599418087614" duration="4586000" />
+      <workItem from="1599464105994" duration="137000" />
+      <workItem from="1599466694334" duration="2000" />
     </task>
     <servers />
   </component>
@@ -189,5 +192,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
