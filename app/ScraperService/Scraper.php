@@ -3,6 +3,7 @@
 
 namespace App\ScraperService;
 
+use App\Console\Commands\dailyReport;
 use Goutte\Client;
 use Illuminate\Support\Facades\File;
 
@@ -71,40 +72,7 @@ class Scraper
         return array_combine($this->key, $this->value);
     }
 
-    public function other()
-    {
-        $c = new Client();
-        $data = $c->request("GET", "https://www.worldometers.info/coronavirus/");
 
-        $k = $data->filter("table  > tbody > tr")->each(
-            function ($item) {
-                $this->key[] = str_replace(":", " ", $item->text());
-            }
-        );
-
-        $v = $data->filter(".main_table_countries_today  > span")->each(
-            function ($item) {
-                $this->value[] = $item->text();
-            }
-        );
-        $detaille = [];
-        foreach (array_slice($this->key, 8) as $item => $value) {
-            $detaille[$item] = explode(" ", $value);
-        }
-        $nogmeerDetaills = [];
-        foreach ($detaille as $item => $value) {
-            if (is_string($value[1])) {
-                $nogmeerDetaills[$value[1]] = [
-                    "totalCases" => $value[2],
-                    "newCases" => $value[3],
-                    "death" => $value[5] ?? ''
-                ];
-            }
-        }
-        print_r($nogmeerDetaills);
-//        $ar = array_combine($this->key, $this->value);
-//        return ["overview" => $ar];
-    }
 
     private function data()
     {
@@ -117,15 +85,29 @@ class Scraper
         ])->toJson();
     }
 
-    public function createJsonFile()
+    public function createJsonFile($command)
     {
         $file = date('Y-m-d') . '_refactoring_file.json';
         $destinationPath = public_path() . "/ScraperStorage/json/";
         if (!is_dir($destinationPath)) {
             mkdir($destinationPath, 0777, true);
         }
-        File::put($destinationPath . $file, $this->data());
-        echo "done";
+
+        if(in_array(["overview", "dailyReport"])){
+
+            if ($command == 'overview'){
+                File::put($destinationPath . $file, $this->other());
+
+            }
+            elseif($command == 'dailyReport') {
+                File::put($destinationPath . $file, (new DailyReposrt())->renderData());
+            }
+        }else{
+            echo "choose one the following arguments:\n -overview\n  dailyReport\n";
+        }
+
+
+        echo "done\n";
         return;
     }
 }

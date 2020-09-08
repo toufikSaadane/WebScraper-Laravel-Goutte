@@ -147,6 +147,9 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1h9IlVIO69NLjJZseYXSXtnT8yj" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -176,6 +179,7 @@
       <workItem from="1599418087614" duration="4586000" />
       <workItem from="1599464105994" duration="137000" />
       <workItem from="1599466694334" duration="2000" />
+      <workItem from="1599567526967" duration="1208000" />
     </task>
     <servers />
   </component>
@@ -193,5 +197,15 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="458" y="212" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1599568114053">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="458" y="212" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1440.900@0.0.1440.900" timestamp="1599568114053" />
+    <state x="418" y="183" key="NewPhpClassDialog" timestamp="1599568024220">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="418" y="183" key="NewPhpClassDialog/0.0.1440.900@0.0.1440.900" timestamp="1599568024220" />
   </component>
 </project>

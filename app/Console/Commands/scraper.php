@@ -11,7 +11,7 @@ class scraper extends Command
      *
      * @var string
      */
-    protected $signature = 'scraper';
+    protected $signature = 'scraper {--argument}';
 
     /**
      * The console command description.
@@ -37,7 +37,9 @@ class scraper extends Command
      */
     public function handle()
     {
-        (new \App\ScraperService\Scraper())->other();
+        $arg = $this->argument('argument');
+        dd($arg);
+        (new \App\ScraperService\Scraper())->createJsonFile($arg);
         return 0;
     }
 }
