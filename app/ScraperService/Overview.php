@@ -3,11 +3,10 @@
 
 namespace App\ScraperService;
 
-use App\Console\Commands\dailyReport;
 use Goutte\Client;
 use Illuminate\Support\Facades\File;
 
-class Scraper
+class Overview
 {
     private $key = [];
     private $value = [];
@@ -73,41 +72,13 @@ class Scraper
     }
 
 
-
-    private function data()
+    public function data()
     {
         return collect([
             $this->totalOverview(),
-            "countries" => [
-                $this->scrapingMorocco(),
-                $this->scrapingNederland()
-            ]
+            $this->scrapingMorocco(),
+            $this->scrapingNederland()
         ])->toJson();
     }
 
-    public function createJsonFile($command)
-    {
-        $file = date('Y-m-d') . '_refactoring_file.json';
-        $destinationPath = public_path() . "/ScraperStorage/json/";
-        if (!is_dir($destinationPath)) {
-            mkdir($destinationPath, 0777, true);
-        }
-
-        if(in_array(["overview", "dailyReport"])){
-
-            if ($command == 'overview'){
-                File::put($destinationPath . $file, $this->other());
-
-            }
-            elseif($command == 'dailyReport') {
-                File::put($destinationPath . $file, (new DailyReposrt())->renderData());
-            }
-        }else{
-            echo "choose one the following arguments:\n -overview\n  dailyReport\n";
-        }
-
-
-        echo "done\n";
-        return;
-    }
 }
