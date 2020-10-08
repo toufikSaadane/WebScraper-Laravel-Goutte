@@ -54,7 +54,7 @@ class Overview
         $c = new Client();
         $data = $c->request("GET", "https://www.worldometers.info/coronavirus/country/$land/");
 
-        $k = $data->filter("#maincounter-wrap  > h1")->each(
+       $data->filter("#maincounter-wrap  > h1")->each(
             function ($item) {
 
                 $this->key[] = str_replace(":", " ", $item->text());
@@ -62,7 +62,7 @@ class Overview
             }
         );
 
-        $v = $data->filter(".maincounter-number  > span")->each(
+        $data->filter(".maincounter-number  > span")->each(
             function ($item) {
                 $this->value[] = $item->text();
             }

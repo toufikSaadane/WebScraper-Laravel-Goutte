@@ -17,13 +17,13 @@ class DailyReposrt
         $c = new Client();
         $data = $c->request("GET", "https://www.worldometers.info/coronavirus/");
 
-        $k = $data->filter("table  > tbody > tr")->each(
+        $data->filter("table  > tbody > tr")->each(
             function ($item) {
                 $this->key[] = str_replace(":", " ", $item->text());
             }
         );
 
-        $v = $data->filter(".main_table_countries_today  > span")->each(
+        $data->filter(".main_table_countries_today  > span")->each(
             function ($item) {
                 $this->value[] = $item->text();
             }

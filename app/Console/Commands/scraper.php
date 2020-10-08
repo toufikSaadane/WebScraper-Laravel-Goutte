@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\Factory\FileFactory;
+use App\ScraperFactory\FileFactory;
 use Illuminate\Console\Command;
 
 class scraper extends Command
@@ -12,7 +12,7 @@ class scraper extends Command
      *
      * @var string
      */
-    protected $signature = 'scraper {argument}';
+    protected $signature = 'scraper {argument} {--toSql}';
 
     /**
      * The console command description.
@@ -39,6 +39,8 @@ class scraper extends Command
     public function handle()
     {
         $arg = $this->argument('argument');
+        $arg_twee = $this->argument("--toSql");
+        dd($arg_twee);
         (new FileFactory())->createFile($arg);
         return 0;
     }

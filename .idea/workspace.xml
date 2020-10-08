@@ -22,9 +22,9 @@
     <list default="true" id="33282b0e-d317-4f9d-a717-5c84279afa38" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Console/Commands/scraper.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Commands/scraper.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/ScraperService/Scraper.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/ScraperService/Overview.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/ScraperStorage/json/2020-09-08_refactoring_file.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ScraperFactory/FileFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/ScraperFactory/FileFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ScraperService/DailyReposrt.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/ScraperService/DailyReposrt.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ScraperService/Overview.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/ScraperService/Overview.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -181,7 +181,11 @@
       <workItem from="1599418087614" duration="4586000" />
       <workItem from="1599464105994" duration="137000" />
       <workItem from="1599466694334" duration="2000" />
-      <workItem from="1599567526967" duration="4975000" />
+      <workItem from="1599567526967" duration="5670000" />
+      <workItem from="1600414933103" duration="628000" />
+      <workItem from="1602070754697" duration="1440000" />
+      <workItem from="1602073160860" duration="210000" />
+      <workItem from="1602081823163" duration="659000" />
     </task>
     <servers />
   </component>

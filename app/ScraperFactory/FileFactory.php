@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Factory;
+namespace App\ScraperFactory;
 
 
 use App\ScraperService\DailyReposrt;
@@ -27,7 +27,7 @@ class FileFactory
     }
 
     public function createFolder(){
-        $destinationPath = public_path() . "/ScraperStorage/json/";
+        $destinationPath = storage_path() . "/ScraperStorage/json/";
         if (!is_dir($destinationPath)) {
             mkdir($destinationPath, 0777, true);
         }
